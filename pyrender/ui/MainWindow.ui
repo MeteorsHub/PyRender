@@ -47,7 +47,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Display Type</string>
+         <string>Display</string>
         </property>
        </widget>
       </item>
@@ -146,14 +146,14 @@
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_13">
+         <widget class="QPushButton" name="pushButton_zoomIn">
           <property name="text">
            <string>Zoom In</string>
           </property>
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QPushButton" name="pushButton_14">
+         <widget class="QPushButton" name="pushButton_zoomOut">
           <property name="text">
            <string>Zoom Out</string>
           </property>
@@ -293,8 +293,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_zoomIn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>on_clicked_button_zoom_in()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>454</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>373</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_zoomOut</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>on_clicked_button_zoom_out()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>322</x>
+     <y>454</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>373</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>on_clicked_action_open()</slot>
+  <slot>on_clicked_button_zoom_in()</slot>
+  <slot>on_clicked_button_zoom_out()</slot>
  </slots>
 </ui>

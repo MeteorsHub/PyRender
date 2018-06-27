@@ -18,8 +18,10 @@ class MainWindow(QMainWindow):
         init_img = QPixmap(800, 600)
         self.update_shader(init_img)
 
-    def update_shader(self, img):
+    def update_shader(self, img: QPixmap=None):
         self.shader: QLabel
+        if img is None:
+            img = self.renderer.update_render()
         self.shader.setPixmap(img)
 
     def on_clicked_action_open(self):
@@ -28,6 +30,7 @@ class MainWindow(QMainWindow):
             return
         stat = self.renderer.open_obj_file(filename)
         if stat == Renderer.OPEN_FILE_SUCCESS:
+            self.update_shader()
             return
         msg = "Failed opening '%s'. " % filename
         if stat == Renderer.OPEN_FILE_NOT_EXIST:
@@ -37,6 +40,14 @@ class MainWindow(QMainWindow):
         if stat == Renderer.OPEN_FILE_SYNTAX_NOT_SUPPORT:
             msg += 'File syntax not support.'
         QMessageBox.warning(self, 'Failed Opening', msg)
+
+    def on_clicked_button_zoom_in(self):
+        self.renderer.zoom(self.renderer.ZOOM_METHOD_IN)
+        self.update_shader()
+
+    def on_clicked_button_zoom_out(self):
+        self.renderer.zoom(self.renderer.ZOOM_METHOD_OUT)
+        self.update_shader()
 
 
 if __name__ == '__main__':
